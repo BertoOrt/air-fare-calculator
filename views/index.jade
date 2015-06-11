@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  form(action='/', method='post')
+      .title
+        h1= title
+      section
+        .departure
+          label(for='departure')  Departure:
+          select#departure(name='departure')
+            option(value='newyork') New York
+            option(value='chicago') Chicago
+            option(value='losangeles') Los Angeles
+        .arrival
+          label(for='arrival') Arrival:
+          select#arrival(name='arrival')
+            option(value='newyork') New York
+            option(value='chicago') Chicago
+            option(value='losangeles') Los Angeles
+        .bags
+          label(for='bags') Checked bags ($25/bag):
+          input#bags(type='number', name='bags', min="0")
+        .airclass
+          label(for='airclass') Class:
+          select#airclass(name='airclass')
+            option(value='0') Economy (+ $0)
+            option(value='200') Business (+ $200)
+            option(value='500') First (+ $500)
+        .wifi
+          input#wifi(type='checkbox', name='wifi')
+          label(for='wifi') Wifi ($12)
+        .discount
+          label(for='discount') Discount Code:
+          input#discount(type='text', name='discount')
+        .button
+          input(type='submit', value='CalculatePrice')
+        div
+          h5.amount Your price is: 
+          h2 $ #{result}
